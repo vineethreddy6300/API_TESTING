@@ -16,7 +16,7 @@ jobs:
         POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
         COLLECTION_NAME: "Employees"
       run: |
-        collection_uid=$(curl --loaction --request GET "https://api.getpostman.com/collections" \
+        collection_uid=$(curl --location --request GET "https://api.getpostman.com/collections" \
         --header "X-Api-Key: $POSTMAN_API_KEY" | jq -r --arg name "$COLLECTION_NAME" '.collections[] | select(.name == $name) | .uid')
         
         curl --location --request GET "https://api.getpostman.com/collections/$collection_uid" \
